@@ -22,7 +22,7 @@ export interface Activity {
   id: string;
   name: string;
   subjectId: string;
-  periodIndex: number; // 0-indexed period (e.g. 0 to 3 for bimesters)
+  periodIndex: number;
   date: string;
 }
 
@@ -34,6 +34,7 @@ export interface Grade {
 
 export interface AppSettings {
   periodType: PeriodType;
+  password: string;
   weights: {
     AD: number;
     A: number;
