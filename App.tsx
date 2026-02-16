@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { 
   Student, Subject, Activity, Grade, GradeValue, 
   PeriodType, AppSettings, AppState 
-} from './types';
-import { DEFAULT_SETTINGS, ICONS } from './constants';
-import StudentManager from './components/StudentManager';
-import Gradebook from './components/Gradebook';
-import SettingsView from './components/SettingsView';
-import ReportView from './components/ReportView';
-import LoginView from './components/LoginView';
+} from './types.ts';
+import { DEFAULT_SETTINGS, ICONS } from './constants.tsx';
+import StudentManager from './components/StudentManager.tsx';
+import Gradebook from './components/Gradebook.tsx';
+import SettingsView from './components/SettingsView.tsx';
+import ReportView from './components/ReportView.tsx';
+import LoginView from './components/LoginView.tsx';
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

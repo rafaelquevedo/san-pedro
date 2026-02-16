@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
-import { Student, Subject } from '../types.ts';
-import { ICONS } from '../constants.tsx';
+import { Student, Subject } from '../types';
+import { ICONS } from '../constants';
+import { generateId } from '../utils';
 
 interface Props {
   students: Student[];
@@ -24,7 +25,7 @@ const StudentManager: React.FC<Props> = ({
     e.preventDefault();
     if (!sName || !sGrade || !sSection) return;
     onAdd({
-      id: crypto.randomUUID(),
+      id: generateId(),
       name: sName,
       grade: sGrade,
       section: sSection
@@ -36,7 +37,7 @@ const StudentManager: React.FC<Props> = ({
     e.preventDefault();
     if (!subName) return;
     onAddSubject({
-      id: crypto.randomUUID(),
+      id: generateId(),
       name: subName
     });
     setSubName('');
@@ -44,7 +45,6 @@ const StudentManager: React.FC<Props> = ({
 
   return (
     <div className="grid md:grid-cols-2 gap-8">
-      {/* Alumnos */}
       <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
           <ICONS.Users /> Gestionar Estudiantes
@@ -79,7 +79,7 @@ const StudentManager: React.FC<Props> = ({
           </button>
         </form>
 
-        <div className="max-h-[400px] overflow-y-auto space-y-2">
+        <div className="max-h-[400px] overflow-y-auto space-y-2 custom-scrollbar">
           {students.length === 0 && <p className="text-slate-400 text-center py-4">No hay estudiantes registrados.</p>}
           {students.map(s => (
             <div key={s.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border group">
@@ -98,7 +98,6 @@ const StudentManager: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* Áreas / Cursos */}
       <section className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
           <ICONS.Book /> Gestionar Áreas
@@ -117,7 +116,7 @@ const StudentManager: React.FC<Props> = ({
           </button>
         </form>
 
-        <div className="max-h-[400px] overflow-y-auto space-y-2">
+        <div className="max-h-[400px] overflow-y-auto space-y-2 custom-scrollbar">
           {subjects.length === 0 && <p className="text-slate-400 text-center py-4">No hay áreas registradas.</p>}
           {subjects.map(sub => (
             <div key={sub.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border group">

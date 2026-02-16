@@ -3,8 +3,9 @@ import React, { useState, useMemo } from 'react';
 import { 
   Student, Subject, Activity, Grade, GradeValue, 
   AppSettings, PeriodType 
-} from '../types.ts';
-import { ICONS } from '../constants.tsx';
+} from '../types';
+import { ICONS } from '../constants';
+import { generateId } from '../utils';
 
 interface Props {
   students: Student[];
@@ -34,7 +35,7 @@ const Gradebook: React.FC<Props> = ({
   const handleAddActivity = () => {
     if (!newActivityName || !selectedSubjectId) return;
     onAddActivity({
-      id: crypto.randomUUID(),
+      id: generateId(),
       name: newActivityName,
       subjectId: selectedSubjectId,
       periodIndex: selectedPeriod,
@@ -54,7 +55,6 @@ const Gradebook: React.FC<Props> = ({
 
   return (
     <div className="space-y-6">
-      {/* Filters */}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-1">
           <label className="block text-xs font-semibold text-slate-500 uppercase mb-1">Área / Curso</label>
@@ -82,7 +82,6 @@ const Gradebook: React.FC<Props> = ({
         </div>
       </div>
 
-      {/* Activity Bar */}
       <div className="bg-indigo-50 p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center">
         <div className="flex-1 w-full">
           <input 
@@ -101,12 +100,11 @@ const Gradebook: React.FC<Props> = ({
         </button>
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden overflow-x-auto">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden overflow-x-auto custom-scrollbar">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-slate-50 border-b">
-              <th className="p-4 text-left text-xs font-bold text-slate-500 uppercase sticky left-0 bg-slate-50 z-10 w-48">Estudiante</th>
+              <th className="p-4 text-left text-xs font-bold text-slate-500 uppercase sticky left-0 bg-slate-50 z-10 w-48 shadow-[1px_0_0_0_rgba(0,0,0,0.1)]">Estudiante</th>
               {filteredActivities.map(a => (
                 <th key={a.id} className="p-4 text-center text-xs font-bold text-slate-500 uppercase min-w-[100px] group relative">
                   <div className="flex flex-col items-center gap-1">
@@ -131,7 +129,7 @@ const Gradebook: React.FC<Props> = ({
             )}
             {students.map(s => (
               <tr key={s.id} className="border-b hover:bg-slate-50 transition">
-                <td className="p-4 font-medium sticky left-0 bg-white group-hover:bg-slate-50 z-10">
+                <td className="p-4 font-medium sticky left-0 bg-white group-hover:bg-slate-50 z-10 shadow-[1px_0_0_0_rgba(0,0,0,0.1)]">
                   <div className="flex flex-col">
                     <span className="text-sm truncate max-w-[150px]">{s.name}</span>
                     <span className="text-[10px] text-slate-400">{s.grade}° {s.section}</span>
@@ -144,10 +142,10 @@ const Gradebook: React.FC<Props> = ({
                       <select 
                         value={grade?.value || ''}
                         onChange={e => onUpdateGrade(s.id, a.id, e.target.value as GradeValue)}
-                        className={`w-full p-2 border rounded-lg text-center font-bold outline-none focus:ring-2 focus:ring-indigo-500 ${
+                        className={`w-full p-2 border rounded-lg text-center font-bold outline-none focus:ring-2 focus:ring-indigo-500 transition-colors ${
                           grade?.value === 'AD' ? 'text-blue-600 bg-blue-50 border-blue-200' :
                           grade?.value === 'A' ? 'text-green-600 bg-green-50 border-green-200' :
-                          grade?.value === 'B' ? 'text-yellow-600 bg-yellow-50 border-yellow-200' :
+                          grade?.value === 'B' ? 'text-yellow-600 bg-yellow-100 border-yellow-200' :
                           grade?.value === 'C' ? 'text-red-600 bg-red-50 border-red-200' : 'bg-white'
                         }`}
                       >

@@ -7,6 +7,12 @@
     <title>Registro Auxiliar Docente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Carga de React y Babel para ejecución directa en el navegador -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
@@ -14,13 +20,15 @@
             background-color: #f8fafc;
             -webkit-tap-highlight-color: transparent;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
+        #root:empty::before {
+            content: "Iniciando sistema docente...";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #6366f1;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
     </style>
 <script type="importmap">
@@ -38,7 +46,8 @@
 </head>
 <body class="text-slate-900">
     <div id="root"></div>
-    <!-- Carga automática del módulo index.tsx por el entorno -->
-    <script type="module" src="./index.tsx"></script>
+    
+    <!-- Este script type="text/babel" le dice a Babel que debe procesar este archivo -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
 </body>
 </html>
