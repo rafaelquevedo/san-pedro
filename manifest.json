@@ -1,0 +1,34 @@
+
+{
+  "short_name": "Registro",
+  "name": "Registro Auxiliar Docente",
+  "description": "Sistema profesional de gestión de notas cualitativas con IA",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3426/3426653.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3426/3426653.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#4338ca",
+  "background_color": "#f8fafc",
+  "shortcuts": [
+    {
+      "name": "Ver Registro",
+      "short_name": "Registro",
+      "url": "./index.html",
+      "icons": [{ "src": "https://cdn-icons-png.flaticon.com/512/3426/3426653.png", "sizes": "192x192" }]
+    }
+  ]
+}

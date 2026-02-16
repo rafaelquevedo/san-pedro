@@ -1,0 +1,8 @@
+{
+  "name": "Registro Auxiliar Docente",
+  "short_name": "Registro",
+  "description": "Aplicación profesional para la gestión de notas cualitativas con IA.",
+  "requestFramePermissions": [],
+  "theme_color": "#4338ca",
+  "background_color": "#f8fafc"
+}
