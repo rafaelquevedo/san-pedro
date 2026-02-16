@@ -15,13 +15,16 @@
         body { 
             font-family: 'Inter', sans-serif; 
             overscroll-behavior-y: contain;
+            background-color: #f8fafc;
         }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
-        
-        @media (max-width: 768px) {
-            input, select, button { font-size: 16px !important; }
+        /* Prevenir scroll horizontal accidental */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        /* Mejorar inputs en iOS */
+        input, select, textarea {
+            font-size: 16px !important;
         }
     </style>
 <script type="importmap">
@@ -35,14 +38,16 @@
 }
 </script>
 </head>
-<body class="bg-slate-50 text-slate-900 select-none">
+<body class="text-slate-900">
     <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
     <script>
+      // Registro de Service Worker para PWA (Instalación)
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then(reg => console.log('SW registrado'))
-            .catch(err => console.log('SW error', err));
+          navigator.serviceWorker.register('./sw.js', { scope: './' })
+            .then(reg => console.log('SW registrado con éxito'))
+            .catch(err => console.log('Error al registrar SW', err));
         });
       }
     </script>
