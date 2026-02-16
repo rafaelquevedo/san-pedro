@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { AppSettings, PeriodType } from './types';
+import { AppSettings, PeriodType } from './types.ts';
 
 export const DEFAULT_SETTINGS: AppSettings = {
   periodType: PeriodType.Bimestre,
