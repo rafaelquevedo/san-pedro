@@ -6,7 +6,14 @@ export const generateFeedback = async (
   subject: string, 
   grades: { name: string; value: string }[]
 ): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Verificación de seguridad para evitar que la app se rompa si no hay proceso o API KEY
+  const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+  
+  if (!apiKey) {
+    return "Nota: La API KEY no está configurada. Para usar la IA, asegúrate de configurar las variables de entorno en Vercel/Netlify.";
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   const gradesText = grades.map(g => `${g.name}: ${g.value}`).join(', ');
   const prompt = `Como profesor, genera un breve comentario de retroalimentación constructiva para el estudiante ${studentName} en el área de ${subject}. Sus notas en las actividades recientes son: ${gradesText}. Las notas posibles son AD (Excelente), A (Muy Bueno), B (Regular), C (Necesita mejorar). Mantén el tono profesional y motivador. Máximo 100 palabras.`;
