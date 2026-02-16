@@ -3,8 +3,8 @@ import React, { useState, useMemo } from 'react';
 import { 
   Student, Subject, Activity, Grade, GradeValue, 
   AppSettings, PeriodType 
-} from '../types';
-import { ICONS } from '../constants';
+} from '../types.ts';
+import { ICONS } from '../constants.tsx';
 
 interface Props {
   students: Student[];

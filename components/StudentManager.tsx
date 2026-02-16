@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Student, Subject } from '../types';
-import { ICONS } from '../constants';
+import { Student, Subject } from '../types.ts';
+import { ICONS } from '../constants.tsx';
 
 interface Props {
   students: Student[];

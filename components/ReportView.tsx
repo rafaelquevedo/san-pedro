@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo } from 'react';
-import { Student, Subject, Activity, Grade, AppSettings, PeriodType, GradeValue } from '../types';
-import { ICONS } from '../constants';
-import { generateFeedback } from '../services/geminiService';
+import { Student, Subject, Activity, Grade, AppSettings, PeriodType, GradeValue } from '../types.ts';
+import { ICONS } from '../constants.tsx';
+import { generateFeedback } from '../services/geminiService.ts';
 
 interface Props {
   students: Student[];
